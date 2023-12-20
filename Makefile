@@ -6,17 +6,17 @@
 #    By: cfeijoo <cfeijoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/02 14:37:36 by cfeijoo           #+#    #+#              #
-#    Updated: 2014/05/15 01:50:58 by cfeijoo          ###   ########.fr        #
+#    Updated: 2023/12/20 14:25:42 by younver          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = rt
 
-INCLUDEFOLDERS = -I./includes/ -I./libft/includes/ -I/opt/X11/include/X11/
-LIBFOLDERS = -L./libft/ -L/usr/X11/lib/ -L/usr/X11/include
-LIBS =  -lmlx -lXext -lX11 -lft -lm -lpthread
+INCLUDEFOLDERS = -I./includes/ -I./libft/includes/ -I/usr/X11/include
+LIBFOLDERS = -L./libft/ -L/usr/X11/lib
+LIBS = -lmlx -lXext -lX11 -lft -lm -lpthread
 
 CC = clang
-CFLAGS = -Wall  -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra -O3
 
 SOURCES_FOLDER = sources/
 OBJECTS_FOLDER = objects/
@@ -105,9 +105,16 @@ ERROR_COLOR =	\x1b[31;01m
 WARN_COLOR =	\x1b[33;01m
 SILENT_COLOR =	\x1b[30;01m
 
-.PHONY: all re clean fclean
+.PHONY: all re init clean fclean
 
 all: complibs $(NAME)
+
+init:
+	git clone https://github.com/42Paris/minilibx-linux.git mlx
+	make -C mlx/
+	sudo cp mlx/mlx.h /usr/X11/include
+	sudo cp mlx/libmlx.a /usr/X11/lib
+	rm -rf mlx
 
 linux :
 	@$(eval INCLUDEFOLDERS := -I./includes/ -I./libft/includes/ -I/usr/X11/include/ -I/usr/include/X11)
