@@ -11,12 +11,12 @@
 # **************************************************************************** #
 NAME = rt
 
-INCLUDEFOLDERS = -I./includes/ -I./libft/includes/ -I/usr/X11/include
-LIBFOLDERS = -L./libft/ -L/usr/X11/lib
+INCLUDEFOLDERS = -I./includes/ -I./libft/includes/ -I/usr/X11/include -I./libmlx/
+LIBFOLDERS = -L./libft/ -L./libmlx/ -L/usr/X11/lib
 LIBS = -lmlx -lXext -lX11 -lft -lm -lpthread
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra -O3
+CFLAGS = -Wall -Werror -Wextra -O3 -std=c99
 
 SOURCES_FOLDER = sources/
 OBJECTS_FOLDER = objects/
@@ -109,13 +109,6 @@ SILENT_COLOR =	\x1b[30;01m
 
 all: complibs $(NAME)
 
-init:
-	git clone https://github.com/42Paris/minilibx-linux.git mlx
-	make -C mlx/
-	sudo cp mlx/mlx.h /usr/X11/include
-	sudo cp mlx/libmlx.a /usr/X11/lib
-	rm -rf mlx
-
 linux :
 	@$(eval INCLUDEFOLDERS := -I./includes/ -I./libft/includes/ -I/usr/X11/include/ -I/usr/include/X11)
 	@$(eval LIBFOLDERS := -L./libft/ -L/usr/X11/lib/ -L/usr/X11/include)
@@ -131,6 +124,7 @@ $(NAME) : $(OBJECTS)
 	@echo " $(OK_COLOR)Successful ✓$(NO_COLOR)"
 
 complibs :
+	@make -C libmlx/
 	@make -C libft/ usemath all
 
 clean :
