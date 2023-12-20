@@ -6,7 +6,7 @@
 /*   By: cfeijoo <cfeijoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/19 23:40:35 by cfeijoo           #+#    #+#             */
-/*   Updated: 2014/02/20 00:36:30 by cfeijoo          ###   ########.fr       */
+/*	 Updated: 2023/12/20 14:25:42 by younver          ###   ########.fr		  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,8 @@ int					index_var(char *name, void *object, t_hashmap *hashmap)
 
 t_hashmap			*create_hashmap(unsigned int size)
 {
-	unsigned int	i;
 	t_hashmap		*hashmap;
 
-	i = 0;
 	hashmap = ft_memalloc(sizeof(t_hashmap));
 	hashmap->size = size;
 	hashmap->vars = ft_memalloc(size * sizeof(t_hashmap_var));

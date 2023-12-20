@@ -39,7 +39,7 @@ int				mousepress_ev(int button, int x, int y)
 			if (button == 3)
 			{
 				ft_putstr("Selected object ");
-				ft_putunbr((unsigned int)ray.closest);
+				ft_putunbr(*(unsigned int *)&ray.closest);
 				ft_putendl(".");
 			}
 			env->selected_object = ray.closest;

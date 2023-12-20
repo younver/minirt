@@ -49,10 +49,8 @@ static void			parse_line(char *line)
 
 static void			*ask_user()
 {
-	t_scene			*scene;
 	char			*line;
 
-	scene = env->scene;
 	while (1)
 	{
 		get_stdin_next_line(&line);

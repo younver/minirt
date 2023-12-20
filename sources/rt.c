@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <mlx.h>
-#include <X.h>
+#include <X11/X.h>
 #include <rt.h>
 #include <ray.h>
 #include <parser.h>

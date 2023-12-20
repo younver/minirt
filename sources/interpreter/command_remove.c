@@ -21,7 +21,7 @@ static int			search_objects(int search)
 	object = env->scene->objects;
 	while (object)
 	{
-		if ((int)object == search)
+		if (*(int *)&object == search)
 		{
 			remove_object(env->scene, object);
 			return (1);
@@ -38,7 +38,7 @@ static int			search_lights(int search)
 	light = env->scene->lights;
 	while (light)
 	{
-		if ((int)light == search)
+		if (*(int *)&light == search)
 		{
 			remove_light(env->scene, light);
 			return (1);

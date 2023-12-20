@@ -23,10 +23,8 @@ void		init_pressed_keys(t_pressedkeys *keys)
 
 int			is_one_key_pressed(t_pressedkeys *keys)
 {
-	int		i;
 	int		*key;
 
-	i = 0;
 	key = (int*)keys;
 	while ((size_t)key - (size_t)(keys) < sizeof(*keys))
 	{

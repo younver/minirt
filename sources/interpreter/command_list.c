@@ -29,7 +29,7 @@ void				cmd_list(char **line)
 			ft_putstr("Sphere ");
 		else if (object->type == OBJ_PLANE)
 			ft_putstr("Plane ");
-		printf("\t%u\n", (unsigned int)object);
+		printf("\t%u\n", *(unsigned int *)&object);
 		ft_putendl("");
 		object = object->next;
 	}
@@ -38,7 +38,7 @@ void				cmd_list(char **line)
 	while (light)
 	{
 		ft_putstr("Light ");
-		printf("\t%u\n", (unsigned int)light);
+		printf("\t%u\n", *(unsigned int *)&light);
 		ft_putendl("");
 		light = light->next;
 	}
